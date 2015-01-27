@@ -1,0 +1,11 @@
+<h1>Todos</h1>
+
+<% @todos.each do |todo| %>
+    <p> <%= todo.message %> </p>
+<% end %>
+
+<%= form_for(@todo, remote: true, new: new-todo) do |f| %>
+    <%= f.label :message %>
+    <%= f.text_field :message %>
+    <%= f.submit %>
+<% end %>
