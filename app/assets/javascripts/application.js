@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function () {
+    $("#new_todo_item").on("ajax:success", function(e, data, status, xhr) {
+        $("#new_todo_item").append(status)
+        $('#todo-list-container').append("<p>" + data["message"] + "</p>")
+    }).on("ajax:error", function(e, xhr, status, error) {
+        $("#new_todo_item").append("<p>ERROR</p>")
+    });
+});

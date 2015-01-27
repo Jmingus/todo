@@ -1,10 +1,14 @@
-<h1>Todos</h1>
-
-<% @todos.each do |todo| %>
-    <p> <%= todo.message %> </p>
+<% if flash[:notice] || flash[:alert] %>
+    <div class='flash'><%= flash[:notice] || flash[:alert] %></div>
 <% end %>
 
-<%= form_for(@todo, remote: true, new: new-todo) do |f| %>
+<div id='todo-list-container'>
+  <% @todos.each do |todo| %>
+      <p> <%= todo.message %> </p>
+  <% end %>
+</div>
+
+<%= form_for(@todo, remote: true, id: 'new-todo') do |f| %>
     <%= f.label :message %>
     <%= f.text_field :message %>
     <%= f.submit %>
